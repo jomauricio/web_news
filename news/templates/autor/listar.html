@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <a href="autores/cadastro" class="btn btn-primary mt-5">Cadastrar</a>
+
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Atualizar</th>
+            <th scope="col">Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for autor in autores %}
+          <tr>
+            <th scope="row">{{autor.id}}</th>
+            <td><a href="autores/{{autor.id}}">{{ autor.nome }}</a></td>
+            <td><a href="autores/{{autor.id}}">{{ autor.nome }}</a></td>
+            <td><a href="autores/atualizar/{{autor.id}}" class="btn btn-primary">Atualizar</a></td>
+            <td><a href="autores/deletar/{{autor.id}}" class="btn btn-primary">Deletar</a></td>
+          </tr>
+        {% endfor  %}
+        </tbody>
+      </table>
+
+
+    {% endblock content %}
