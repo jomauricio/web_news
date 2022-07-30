@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'core.apps.CoreConfig',
     'bootstrap4',
-    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
