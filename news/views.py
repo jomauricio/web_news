@@ -1,19 +1,22 @@
 from urllib import request
-from django.shortcuts import render, redirect
-from .models import Autor, Noticia
+
+from django.shortcuts import redirect, render
+
 from .forms import AutorForm, NoticiaForm
+from .models import Autor, Noticia
+
 # Create your views here.
 
 def index(request):
-    return render(request, 'autor\index.html')
+    return render(request, 'autor/index.html')
 
 def listar(request):
     autores = Autor.objects.all()
-    return render(request, 'autor\listar.html', {'autores':autores})
+    return render(request, 'autor/listar.html', {'autores':autores})
 
 def detalhar(request, id):
     autor = Autor.objects.get(id=id)
-    return render(request, 'autor\detalhar.html', {'autor': autor, 'logomarca': 'O melhor site!!!'})
+    return render(request, 'autor/detalhar.html', {'autor': autor, 'logomarca': 'O melhor site!!!'})
 
 def cadastrar(request):
     if request.method == 'POST':
