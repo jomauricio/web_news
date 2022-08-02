@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', index),
+    path('', index, name='homegape'),
     path('admin/', admin.site.urls),
     path('news/', include('news.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

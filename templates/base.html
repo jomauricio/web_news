@@ -25,10 +25,10 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="{% url 'homegape' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/news">Portal</a>
+              <a class="nav-link" href="{% url 'index_autores' %}">Portal</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin/">Administração</a>
@@ -46,7 +46,49 @@
 
       {% block content %}
       
-      <p class="lead">O conteudo do site fica aqui.</p>
+      <h2>Autores</h2>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Atualizar</th>
+            <th scope="col">Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for autor in autores %}
+          <tr>
+            <th scope="row">{{autor.id}}</th>
+            <td><a href="{% url 'detalhar_autores' autor.id %}">{{ autor.nome }}</a></td>
+            <td><a href="{% url 'atualizar_autores' autor.id %}" class="btn btn-primary">Atualizar</a></td>
+            <td><a href="{% url 'deletar_autores' autor.id %}" class="btn btn-danger">Deletar</a></td>
+          </tr>
+        {% endfor  %}
+        </tbody>
+      </table>
+
+      <h2>Noticias</h2>
+      <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Conteudo</th>
+            <th scope="col">Tags</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for noticia in noticias %}
+          <tr>
+            <th scope="row">{{noticia.id}}</th>
+            <td><a href="noticias/{{noticia.id}}">{{ noticia.titulo }}</a></td>
+            <td><a href="noticias/atualizar/{{noticia.id}}" >{{ noticia.conteudo }}</a></td>
+            <td><a href="noticias/deletar/{{noticia.id}}" >{{ noticia.tags }}</a></td>
+          </tr>
+        {% endfor  %}
+        </tbody>
+      </table>
       
       {% endblock %}
 
